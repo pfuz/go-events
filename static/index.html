@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Event Stream</title>
+</head>
+<body>
+
+    <h1>Temperature:</h1>
+    <p id="temp"></p>
+
+    <h1>Humidity:</h1>
+    <p id="humidity"></p>
+
+    <script>
+        var tempStream = new EventSource("/temp")
+        var humidityStream = new EventSource("/humidity")
+
+        var temp = document.getElementById('temp')
+        var humidity = document.getElementById('humidity')
+
+        tempStream.onmessage = function (e) {
+            const obj = JSON.parse(e.data)
+            temp.innerText = obj.data + " " + "C"
+        }
+
+        humidityStream.onmessage = function (e) {
+            const obj = JSON.parse(e.data)
+            humidity.innerText = obj.data + "%"
+        }
+
+    </script>
+    
+</body>
+</html>

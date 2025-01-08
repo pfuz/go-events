@@ -30,6 +30,16 @@
             humidity.innerText = obj.data + "%"
         }
 
+        tempStream.onerror = function (e) {
+            console.error(e)
+            tempStream.close()
+        }
+
+        humidityStream.onerror = function (e) {
+            console.error(e)
+            humidityStream.close()
+        }
+
     </script>
     
 </body>

@@ -100,5 +100,6 @@ func main() {
 	http.HandleFunc("/", home)
 	http.HandleFunc("/temp", tempStreamHandler)
 	http.HandleFunc("/humidity", humidityStreamHandler)
+	fmt.Println("Server is listening on port :8000")
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }

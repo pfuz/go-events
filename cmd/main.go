@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/pfuz/goevents/utils"
 )
 
 type TemperatureEvent struct {
@@ -90,6 +92,8 @@ func humidityStreamHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
+	parsedURL := utils.ParseURL(r.URL.Path)
+	fmt.Println(parsedURL)
 	cwd, _ := os.Getwd()
 	staticPath := cwd + "/static/"
 

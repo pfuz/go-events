@@ -22,7 +22,7 @@
 
         tempStream.onmessage = function (e) {
             const obj = JSON.parse(e.data)
-            temp.innerText = obj.data + " " + "C"
+            temp.innerText = obj.data + " " + "\u00B0C"
         }
 
         humidityStream.onmessage = function (e) {
